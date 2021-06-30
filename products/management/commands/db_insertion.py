@@ -12,13 +12,7 @@ class Command(BaseCommand):
         cleaned_products = cleaner.clean(products_dict)
 
         for product in cleaned_products:
-            categorie_insertion = Category(
-                name=product['categories']
-                )
-
-            categorie_insertion.save()
-
-            product_insertion = Product(
+            product_insertion = Product.objects.create(
                 name=product['product_name'],
                 url=product['url'],
                 image_url=product['image_url'],
@@ -28,15 +22,10 @@ class Command(BaseCommand):
                 salt_100g=product['salt_100g'],
                 sugar_100g=product['sugars_100g']
                 )
+
+            categories = [p.strip() for p in product['categories'].split(',')]
             
-            product_insertion.save()
-            product_insertion.categories.add(categorie_insertion)
+            for category_name in categories:
+                categorie_insertion, created = Category.objects.get_or_create(name=category_name)
+                product_insertion.categories.add(categorie_insertion)
 
-
-
-
-
-
-        
-
-        
