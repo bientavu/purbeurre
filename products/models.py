@@ -4,7 +4,7 @@ from django.db.models.fields import CharField
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=500)
+    name = models.CharField("category_name", max_length=100, unique=True)
 
     def __str__(self):
         return self.name
