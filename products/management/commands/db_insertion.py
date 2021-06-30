@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from products.models import Product
+from products.models import Product, Category
 from products.openfoodfacts import ProductCleaner, ProductDownloader
 
 class Command(BaseCommand):
@@ -12,7 +12,13 @@ class Command(BaseCommand):
         cleaned_products = cleaner.clean(products_dict)
 
         for product in cleaned_products:
-            insertion = Product(
+            categorie_insertion = Category(
+                name=product['categories']
+                )
+
+            categorie_insertion.save()
+
+            product_insertion = Product(
                 name=product['product_name'],
                 url=product['url'],
                 image_url=product['image_url'],
@@ -23,6 +29,14 @@ class Command(BaseCommand):
                 sugar_100g=product['sugars_100g']
                 )
             
-            insertion.save()
+            product_insertion.save()
+            product_insertion.categories.add(categorie_insertion)
+
+
+
+
+
+
+        
 
         
