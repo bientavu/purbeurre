@@ -20,7 +20,7 @@ class ProductDownloader:
         for page_number in range(1, number_of_pages+1):
             params = {
                 "action": "process",
-                "sort_by": "unique_scans_n", # popularité 
+                "sort_by": "unique_scans_n",
                 "page_size": page_size,
                 "page": page_number, 
                 "fields": "product_name,url,nutriscore_grade,categories,fat_100g,saturated-fat_100g,salt_100g,sugars_100g,image_url",
