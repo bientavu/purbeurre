@@ -1,6 +1,7 @@
 from django.test import TestCase
 from products.models import Category, Product
 
+
 class CategoryModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -8,6 +9,3 @@ class CategoryModelTest(TestCase):
 
     def test_name_label(self):
         category = Category.objects.get(id=1)
-
-
-        
