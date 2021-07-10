@@ -50,4 +50,9 @@ class ProductModelTest(TestCase):
     def test_image_url_blank_is_true(self):
         product = Product.objects.get(id=1)
         blank_is_true = product._meta.get_field('image_url').blank
-        self.assertEquals(blank_is_true, True)
+        self.assertTrue(blank_is_true)
+
+    def test_nutriscore_max_length(self):
+        product = Product.objects.get(id=1)
+        max_length = product._meta.get_field('nutriscore').max_length
+        self.assertEquals(max_length, 1)
