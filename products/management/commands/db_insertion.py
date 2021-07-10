@@ -26,6 +26,6 @@ class Command(BaseCommand):
             categories = [p.strip() for p in product['categories'].split(',')]
             
             for category_name in categories:
-                categorie_insertion, created = Category.objects.get_or_create(name=category_name)
-                product_insertion.categories.add(categorie_insertion)
+                categories_insertion, created = Category.objects.get_or_create(name=category_name)
+                product_insertion.categories.add(categories_insertion)
 
