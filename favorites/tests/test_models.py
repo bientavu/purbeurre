@@ -1,11 +1,13 @@
 from django.test import TestCase
 from products.models import Category, Product
 from favorites.models import Favorite
+from accounts.models import CustomUser
 
 
 class FavoriteModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
+        user = CustomUser.objects.create(birth_date='1992-05-15', email='helloworld@hello.world', username='axel')
         product_insertion = Product.objects.create(name='Nutella', url='http://helloworld.com',
                                                    image_url='http://helloworld.com/image', nutriscore='b',
                                                    fat_100g=0.2,
@@ -17,10 +19,24 @@ class FavoriteModelTest(TestCase):
                                                      satured_fat_100g=0.4, salt_100g=0.1, sugar_100g=0.3)
         product_insertion_2.categories.add(Category.objects.create(name='Compote'))
 
-        Favorite.objects.create(product_to_substitute=Product.objects.get(id=1).id,
-                                product_to_substitute_id=Product.objects.get(id=2).id)
+        p1 = Product.objects.get(id=1)
+        p2 = Product.objects.get(id=2)
 
-    def test_product_to_substitute_related_name(self):
+        Favorite.objects.create(product_to_substitute=p1,
+                                substitute_product=p2,
+                                user=user)
+
+    def test_product_to_substitute_null_is_true(self):
         favorite = Favorite.objects.get(id=1)
-        related_name = favorite._meta.get_field('product_to_substitute').related_name
-        self.assertEquals(related_name, 'favorites_as_product')
+        related_name = favorite._meta.get_field('product_to_substitute').null
+        self.assertTrue(related_name)
+
+    def test_substitute_product_null_is_true(self):
+        favorite = Favorite.objects.get(id=1)
+        related_name = favorite._meta.get_field('substitute_product').null
+        self.assertTrue(related_name)
+
+    def test_user_null_is_true(self):
+        favorite = Favorite.objects.get(id=1)
+        related_name = favorite._meta.get_field('user').null
+        self.assertTrue(related_name)
