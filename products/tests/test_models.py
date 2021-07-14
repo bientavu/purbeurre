@@ -37,10 +37,10 @@ class ProductModelTest(TestCase):
         help_text = product._meta.get_field('categories').help_text
         self.assertEquals(help_text, 'Select a category for this product')
 
-    # def test_categories_related_name(self):
-    #     product = Product.objects.get(id=1)
-    #     related_name = product._meta.get_field('categories').related_name
-    #     self.assertEquals(related_name, 'products')
+    def test_categories_related_name(self):
+        product = Product.objects.get(id=1)
+        related_name = product._meta.get_field('categories').related_name
+        self.assertEquals(related_name, 'products')
 
     def test_url_max_length(self):
         product = Product.objects.get(id=1)

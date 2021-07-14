@@ -53,7 +53,7 @@ class TestProducts(TestCase):
     def test_empty_values_are_removed(self):
         productcleaner = ProductCleaner()
         test_result = productcleaner.clean(result)
-        self.assertContains(correct_removed_result)
+        self.assertEquals(test_result, correct_removed_result)
 
     def test_products_info_values_are_cleaned(self):
         productcleaner = ProductCleaner()
