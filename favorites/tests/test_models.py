@@ -33,10 +33,15 @@ class FavoriteModelTest(TestCase):
 
     def test_substitute_product_null_is_true(self):
         favorite = Favorite.objects.get(id=1)
-        related_name = favorite._meta.get_field('substitute_product').related_name
-        self.assertTrue(related_name)
+        null = favorite._meta.get_field('substitute_product').null
+        self.assertTrue(null)
 
-    # def test_user_null_is_true(self):
-    #     favorite = Favorite.objects.get(id=1)
-    #     related_name = favorite._meta.get_field('user').null
-    #     self.assertTrue(related_name)
+    def test_product_to_substitute_related_name(self):
+        favorite = Favorite.objects.get(id=1)
+        related_name = favorite._meta.get_field('product_to_substitute').remote_field.get_accessor_name()
+        self.assertEquals(related_name, 'favorites_as_product')
+
+    def test_substitute_product_related_name(self):
+        favorite = Favorite.objects.get(id=1)
+        related_name = favorite._meta.get_field('substitute_product').remote_field.get_accessor_name()
+        self.assertEquals(related_name, 'favorites_as_substitute')
