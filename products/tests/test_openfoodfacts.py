@@ -1,5 +1,7 @@
+from unittest import mock
 from django.test import TestCase
 from products.openfoodfacts import ProductDownloader, ProductCleaner
+from products.tests.openfoodfacts_test_response import GET_RESPONSE
 
 result = [{'categories': '',
            'fat_100g': 0,
@@ -47,14 +49,13 @@ correct_removed_result = [{'categories': 'Produits à tartiner, Petit-déjeuners
 class TestProducts(TestCase):
 
     def test_products_info_are_valid(self):
-        productdownloader = ProductDownloader()
-        pass
+        product_downloader = ProductDownloader()
+        with mock.patch('products.openfoodfacts.requests', return_value=GET_RESPONSE):
+            actual_result = product_downloader.get_products_info()
+        expected_result = GET_RESPONSE
+        self.assertEquals(actual_result, expected_result)
 
-    def test_empty_values_are_removed(self):
-        productcleaner = ProductCleaner()
-        test_result = productcleaner.clean(result)
+    def test_empty_values_are_removed_and_cleaned(self):
+        product_cleaner = ProductCleaner()
+        test_result = product_cleaner.clean(result)
         self.assertEquals(test_result, correct_removed_result)
-
-    def test_products_info_values_are_cleaned(self):
-        productcleaner = ProductCleaner()
-        pass
