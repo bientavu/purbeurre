@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'favorites.apps.FavoritesConfig',
     'search.apps.SearchConfig',
     'accounts',
-    'pages'
 ]
 
 MIDDLEWARE = [
