@@ -7,9 +7,12 @@ $orange: #f4623a;
 $brown: #5c4d42;
 $rooibos: #C45525;
 $moules: #345A61;
+$biscuit: #E8A75D;
+
 
 //- Override primary color
 $primary: $rooibos;
+$secondary: $biscuit;
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
