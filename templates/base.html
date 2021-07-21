@@ -47,7 +47,17 @@
                         <ul class="navbar-nav ms-auto my-2 my-lg-0">
                             <li class="nav-item"><a href="{% url 'accounts' %}"><i class="nav-link bi-person fs-2 mb-3"></i></a></li>
                             <li class="nav-item"><a href="#"><object data="static/src/assets/carrot.svg" class="fs-2 mb-3" width="32" height="40"></object></a></li>
-                            <li class="nav-item"><a href="#"><i class="nav-link bi-box-arrow-right fs-2 mb-3"></i></a></li>
+                            <li class="nav-item">
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'logout' %}">
+                                        <i class="nav-link bi-box-arrow-right fs-2 mb-3"></i>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'home' %}">
+                                        <i class="nav-link bi-box-arrow-right fs-2 mb-3"></i>
+                                    </a>
+                                {% endif %}
+                            </li>
                         </ul>
                     </div>
                 </div>
