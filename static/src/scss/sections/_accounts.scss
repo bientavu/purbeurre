@@ -1,0 +1,17 @@
+
+.page-section-account {
+  padding: 12rem 0;
+  background: linear-gradient(to bottom,
+      #{fade-out($brown, 0.2)} 0%,
+      #{fade-out($brown, 0.2)} 100%),
+  url("../assets/img/bg-account.jpg");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.page-section-account-email{
+  padding: 4rem 0;
+}
