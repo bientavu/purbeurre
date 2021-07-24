@@ -17,7 +17,7 @@ Pur Beurre
                         {% if user.is_authenticated %}
                           Bonjour {{ user.first_name }} !
                         {% else %}
-                          <p>Vous n'êtes pas connecté(e)</p>
+                          <p>Vous n'êtes pas connecté(e)</p><br>
                           <a class="btn btn-primary btn-xl" href="{% url 'login' %}">Se connecter</a>
                           <a class="btn btn-primary btn-xl" href="{% url 'signup' %}">S'inscrire</a>
                         {% endif %}
