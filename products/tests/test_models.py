@@ -39,7 +39,7 @@ class ProductModelTest(TestCase):
 
     def test_categories_related_name(self):
         product = Product.objects.first()
-        related_name = product._meta.get_field('categories').related_name
+        related_name = product._meta.get_field('categories').remote_field.get_accessor_name()
         self.assertEquals(related_name, 'products')
 
     def test_url_max_length(self):
