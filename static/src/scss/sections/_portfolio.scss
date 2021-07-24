@@ -1,6 +1,12 @@
 // 
 // Portfolio
-// 
+//
+
+.portfolio-nutriscore{
+    max-width: 20%;
+    height: auto;
+    text-align: right;
+}
 
 #portfolio {
     .container-fluid {
@@ -8,7 +14,10 @@
 
         .portfolio-box {
             position: relative;
-            display: block;
+            display: flex;
+            width: 60%;
+            height: 60%;
+            justify-content: center;
 
             .portfolio-box-caption {
                 display: flex;
@@ -38,7 +47,7 @@
                 }
 
                 .project-name {
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                 }
             }
 
