@@ -14,5 +14,5 @@ def categories_list(request):
 
 
 def product_detail(request, product_id):
-    products = Product.objects.all()[:6]
-    return render(request, 'results.html', {'products': products})
+    product = Product.objects.get(id=product_id)
+    return render(request, 'details.html', {'product': product})
