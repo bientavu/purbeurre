@@ -5,14 +5,14 @@ from products.models import Product, Category
 
 def products_list(request):
     products = Product.objects.all()[:6]
-    return render(request, 'results.html', {'products': products})
+    return render(request, 'products/results.html', {'products': products})
 
 
 def categories_list(request):
     categories = Category.objects.all()
-    return render(request, 'results.html', {'categories': categories})
+    return render(request, 'products/results.html', {'categories': categories})
 
 
 def product_detail(request, product_id):
     product = Product.objects.get(id=product_id)
-    return render(request, 'details.html', {'product': product})
+    return render(request, 'products/details.html', {'product': product})
