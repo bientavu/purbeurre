@@ -4,7 +4,7 @@ section.page-section-account {
     background: linear-gradient(to bottom,
         #{fade-out($brown, 0.2)} 0%,
         #{fade-out($brown, 0.2)} 100%),
-    url("../assets/img/bg-account.jpg");
+    url("../assets/img/bg-account-2.jpg");
 
     background-position: center;
     background-repeat: no-repeat;
@@ -16,15 +16,9 @@ section.page-section-account {
     padding: 4rem 0;
   }
 
-section.page-section-product-details {
-    padding: 12rem 0;
-    background: linear-gradient(to bottom,
-        #{fade-out($brown, 0.2)} 0%,
-        #{fade-out($brown, 0.2)} 100%),
-    url("../assets/img/{{bg-account.jpg}}");
-
+#pspd{
+    padding: 16rem 0;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
-  }
+
+}
