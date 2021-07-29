@@ -15,10 +15,10 @@ Pur Beurre
                 <div class="col-lg-8 align-self-baseline">
                     <h2 class="text-white-75 mb-5">Trouvez un produit de substitution pour ceux que vous consommez
                         tous les jours</h2>
-                    <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
                     <form method="get" action={% url 'search_results' %}>
-                        <label>
-                            <input name="q" type="text" placeholder="Search">
+                        {% csrf_token %}
+                        <label style="width: 60%;">
+                            <input class="btn btn-xl2" name="searched" type="text" placeholder="Tapez votre recherche ici...">
                         </label>
                     </form>
                 </div>
