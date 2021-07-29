@@ -20,6 +20,6 @@ from products.models import Product
 #     return render(request, 'products/results.html', {'searched_product': searched_product})
 
 def search_results(request):
-    if request.method == 'GET':
-        searched = request.GET('q')
+    if request.method == 'POST':
+        searched = request.POST('searched')
         return render(request, 'products/results.html', {'searched': searched})

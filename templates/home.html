@@ -5,7 +5,7 @@ Pur Beurre
 {% endblock %}
 
 {% block header %}
-    <header class="masthead">
+    <header class="masthead" xmlns="http://www.w3.org/1999/html">
         <div class="container px-4 px-lg-5 h-100">
             <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                 <div class="col-lg-8 align-self-end">
@@ -15,11 +15,12 @@ Pur Beurre
                 <div class="col-lg-8 align-self-baseline">
                     <h2 class="text-white-75 mb-5">Trouvez un produit de substitution pour ceux que vous consommez
                         tous les jours</h2>
-                    <form method="get" action={% url 'search_results' %}>
+                    <form method="POST" action={% url 'search_results' %}>
                         {% csrf_token %}
                         <label style="width: 60%;">
-                            <input class="btn btn-xl2" name="searched" type="text" placeholder="Tapez votre recherche ici...">
-                        </label>
+                            <input class="btn btn-xl2" name="searched" type="search" placeholder="Tapez votre recherche ici...">
+                        </label><br><br>
+                        <button class="btn btn-primary btn-xl" type="submit">C'est parti !</button>
                     </form>
                 </div>
             </div>
