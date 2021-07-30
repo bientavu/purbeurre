@@ -21,5 +21,6 @@ from products.models import Product
 
 def search_results(request):
     if request.method == 'POST':
-        searched = request.POST('searched')
-        return render(request, 'products/results.html', {'searched': searched})
+        searched = request.POST['searched']
+        products = Product.objects.filter(name__icontains=searched)
+        return render(request, 'products/results.html', {'searched': searched}, {'products': products})
