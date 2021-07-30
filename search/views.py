@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import ListView
-from products.models import Product
+from products.models import Product, Category
 
 
 # class SearchResultsView(ListView):
@@ -23,4 +23,10 @@ def search_results(request):
     if request.method == 'POST':
         searched = request.POST['searched']
         products = Product.objects.filter(name__icontains=searched)
-        return render(request, 'products/results.html', {'searched': searched}, {'products': products})
+        context = {'searched': searched, 'products': products}
+        return render(request, 'products/results.html', context)
+
+
+def categories_list(request):
+    categories = Category.objects.all()
+    return render(request, 'products/results.html', {'categories': categories})
