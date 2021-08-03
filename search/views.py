@@ -22,8 +22,16 @@ from products.models import Product, Category
 def search_results(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        products = Product.objects.filter(name__icontains=searched)
-        context = {'searched': searched, 'products': products}
+        searched_product = Product.objects.filter(
+            name__icontains=searched,
+            nutriscore__in=['c', 'd', 'e']
+        ).first()
+        substitutes_products = Product.objects.filter(
+            name__icontains=searched,
+            nutriscore__in=['a', 'b'],
+            categories__name__contains=searched_product.categories.first()
+        )
+        context = {'searched_product': searched_product, 'substitutes_products': substitutes_products}
         return render(request, 'products/results.html', context)
 
 

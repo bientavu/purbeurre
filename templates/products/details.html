@@ -5,7 +5,6 @@
 
 {% block content %}
     <section id="pspd" class="bg-dark text-white" style="background-image: url('{{ product.image_url }}')">
-
     </section>
     <!-- Details-->
     <section class="page-section" id="services">
@@ -13,13 +12,13 @@
                 <h2 class="text-center mt-0">{{ product.name }}</h2>
                 <hr class="divider" />
                 <div class="row g-0 justify-content-center">
-                    {% if product.nutriscore == 'A' %}
+                    {% if product.nutriscore == 'a' %}
                         <img class="portfolio-nutriscore" src="{% static 'src/assets/img/nutriscore-a.svg' %}" alt="..." />
-                    {% elif product.nutriscore == 'B' %}
+                    {% elif product.nutriscore == 'b' %}
                         <img class="portfolio-nutriscore" src="{% static 'src/assets/img/nutriscore-b.svg' %}" alt="..." />
-                    {% elif product.nutriscore == 'C' %}
+                    {% elif product.nutriscore == 'c' %}
                         <img class="portfolio-nutriscore" src="{% static 'src/assets/img/nutriscore-c.svg' %}" alt="..." />
-                    {% elif product.nutriscore == 'D' %}
+                    {% elif product.nutriscore == 'd' %}
                         <img class="portfolio-nutriscore" src="{% static 'src/assets/img/nutriscore-d.svg' %}" alt="..." />
                     {% else %}
                         <img class="portfolio-nutriscore" src="{% static 'src/assets/img/nutriscore-e.svg' %}" alt="..." />
