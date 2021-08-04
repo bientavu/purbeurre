@@ -20,6 +20,13 @@ Pur Beurre
                         <label style="width: 60%;">
                             <input class="btn btn-xl2" name="searched" type="search" placeholder="Tapez votre recherche ici...">
                         </label><br><br>
+                        {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                            <h4{% if message.tags %} class="{{ message.tags }} text-white"{% endif %}>{{ message }}</h4>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                         <button class="btn btn-primary btn-xl" type="submit">C'est parti !</button>
                     </form>
                 </div>
