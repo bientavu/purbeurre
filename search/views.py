@@ -4,7 +4,6 @@ from products.models import Product, Category
 
 
 def search_results(request):
-    # if request.method == 'POST':
     searched = request.POST['searched']
     if not searched or searched == "":
         messages.error(request, "Veuillez écrire un produit")
