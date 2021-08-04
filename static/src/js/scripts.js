@@ -51,4 +51,15 @@ window.addEventListener('DOMContentLoaded', event => {
         elements: '#portfolio a.portfolio-box'
     });
 
+
+    // Add or delete favorites
+
+    function favorites(attr) {
+
+    }
+
+    $('.favorites').on('click', function () {
+        favorites($(this).attr("id"));
+    });
+
 });
