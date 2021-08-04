@@ -2,8 +2,6 @@ from django.db import models
 from django.conf import settings
 
 
-# Create your models here.
-
 class Favorite(models.Model):
     product_to_substitute = models.ForeignKey('products.Product', on_delete=models.SET_NULL, null=True,
                                               related_name='favorites_as_product')
