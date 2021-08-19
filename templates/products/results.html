@@ -53,10 +53,10 @@
                                 <div class="project-name text-center">{{ product.name }}</div>
                                 <div id='{{ product.id }}' >
                                     <div id="add-to-favorites">
-                                        <a class="favorites" href="{% url '#' %}" style="text-decoration: none"><p class="nav-link bi-star mb-3 text-center"><br>Ajouter aux favoris</p></a>
+                                        <a class="favorites" href="{% url 'accounts' %}" style="text-decoration: none"><p class="nav-link bi-star mb-3 text-center"><br>Ajouter aux favoris</p></a>
                                     </div>
                                     <div id="delete-from-favorites">
-                                        <a class="favorites" href="{% url '#' %}" style="text-decoration: none"><p class="nav-link bi-star-fill mb-3 text-center"><br>Supprimer des favoris</p></a>
+                                        <a class="favorites" href="{% url 'accounts' %}" style="text-decoration: none"><p class="nav-link bi-star-fill mb-3 text-center"><br>Supprimer des favoris</p></a>
                                     </div>
                                 </div>
                             </div>

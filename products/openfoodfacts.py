@@ -13,7 +13,7 @@ class ProductDownloader:
         Gets all the products information and put in a list
         """
         url = "https://fr.openfoodfacts.org/cgi/search.pl"
-        number_of_pages = 6
+        number_of_pages = 18
         page_size = 1000
 
         products = []
