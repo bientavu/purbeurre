@@ -51,13 +51,15 @@
                             <div>
                                 <div class="project-category text-center">{{ product.categories.all.0.name }}</div>
                                 <div class="project-name text-center">{{ product.name }}</div>
-                                <div id='{{ product.id }}' >
+                                <div>
+                                    <form method="post" id="{{ product.id }}">
                                     <div id="add-to-favorites">
-                                        <a class="favorites" href="{% url 'accounts' %}" style="text-decoration: none"><p class="nav-link bi-star mb-3 text-center"><br>Ajouter aux favoris</p></a>
+                                        <p class="nav-link bi-star mb-3 text-center" type="submit"><br>Ajouter aux favoris</p>
                                     </div>
-                                    <div id="delete-from-favorites">
-                                        <a class="favorites" href="{% url 'accounts' %}" style="text-decoration: none"><p class="nav-link bi-star-fill mb-3 text-center"><br>Supprimer des favoris</p></a>
+                                    <div id="delete-from-favorites" type="submit">
+                                        <a class="favorites" style="text-decoration: none"><p class="nav-link bi-star-fill mb-3 text-center"><br>Supprimer des favoris</p></a>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                     </div>

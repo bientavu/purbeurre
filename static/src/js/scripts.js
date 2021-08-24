@@ -54,12 +54,32 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Add or delete favorites
 
-    function favorites(attr) {
+//     function favorites(attr) {
+//
+//     }
+//
+//     $('.favorites').on('click', function () {
+//         favorites($(this).attr("id"));
+//     });
+//
+// });
 
-    }
-
-    $('.favorites').on('click', function () {
-        favorites($(this).attr("id"));
+    $(document).ready(function () {
+        $("#{ product.id }").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/search_results/",
+                data: {
+                    'product_to_substitute': $('{ searched_product.id }'),
+                    'substitute_product': $('{ product.id }')
+                    // 'video': $('#').val() // from form
+                },
+                success: function () {
+                    $('#add-to-favorites').html("<h2>C'est parti !</h2>")
+                }
+            });
+            return false;
+        });
     });
-
 });
