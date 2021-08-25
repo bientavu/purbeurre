@@ -20,7 +20,7 @@
     <div id="portfolio">
         <div class="container-fluid p-0">
             <div class="row p-5 gx-4 gx-lg-5 h-100 justify-content-center text-center">
-                <div>
+                <div id="searched_product">
                     <h2 id="{{ searched_product.id }}" class="text-center mt-0">{{ searched_product.name }}</h2>
                     <hr class="divider" />
                 </div>
@@ -52,14 +52,9 @@
                                 <div class="project-category text-center">{{ product.categories.all.0.name }}</div>
                                 <div class="project-name text-center">{{ product.name }}</div>
                                 <div>
-                                    <form method="post" id="{{ product.id }}">
-                                    <div id="add-to-favorites">
-                                        <p class="nav-link bi-star mb-3 text-center" type="submit"><br>Ajouter aux favoris</p>
+                                    <div id="add-to-favorites" class="{{ product.id }}">
+                                        <p class="nav-link bi-star mb-3 text-center" ><br>Ajouter aux favoris</p>
                                     </div>
-                                    <div id="delete-from-favorites" type="submit">
-                                        <a class="favorites" style="text-decoration: none"><p class="nav-link bi-star-fill mb-3 text-center"><br>Supprimer des favoris</p></a>
-                                    </div>
-                                    </form>
                                 </div>
                             </div>
                     </div>

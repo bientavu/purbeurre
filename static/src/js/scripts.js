@@ -47,9 +47,9 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     // Activate SimpleLightbox plugin for portfolio items
-    new SimpleLightbox({
-        elements: '#portfolio a.portfolio-box'
-    });
+    // new SimpleLightbox({
+    //     elements: '#portfolio a.portfolio-box'
+    // });
 
 
     // Add or delete favorites
@@ -64,16 +64,32 @@ window.addEventListener('DOMContentLoaded', event => {
 //
 // });
 
-    $(document).ready(function () {
-        $("#{ product.id }").submit(function (event) {
-            event.preventDefault();
+    // $(document).ready(function () {
+    //     $("#{ product.id }").submit(function (event) {
+    //         event.preventDefault();
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "/search_results/",
+    //             data: {
+    //                 'product_to_substitute': $('{ searched_product.id }'),
+    //                 'substitute_product': $('{ product.id }')
+    //                 // 'video': $('#').val() // from form
+    //             },
+    //             success: function () {
+    //                 $('#add-to-favorites').html("<h2>C'est parti !</h2>")
+    //             }
+    //         });
+    //         return false;
+    //     });
+    // });
+
+    $("#add-to-favorites").on('click', function (event) {
             $.ajax({
                 type: "POST",
-                url: "/search_results/",
+                url: "/add_favorites/",
                 data: {
-                    'product_to_substitute': $('{ searched_product.id }'),
-                    'substitute_product': $('{ product.id }')
-                    // 'video': $('#').val() // from form
+                    'substitute_product': $(this).attr('class'),
+                    'product_to_substitute': $("#searched_product > h2").attr('id')
                 },
                 success: function () {
                     $('#add-to-favorites').html("<h2>C'est parti !</h2>")
@@ -81,5 +97,5 @@ window.addEventListener('DOMContentLoaded', event => {
             });
             return false;
         });
-    });
+
 });
