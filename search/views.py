@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from products.models import Product, Category
+from products.models import Product
+from django.db.models import Q
 
 
 def search_results(request):
@@ -18,9 +19,9 @@ def search_results(request):
             return redirect('home')
         else:
             substitutes_products = Product.objects.filter(
-                name__icontains=searched,
-                nutriscore__in=['a', 'b'],
-                categories__name__contains=searched_product.categories.first()
+                Q(categories__name__contains=searched_product.categories.all()[0]) |
+                Q(categories__name__contains=searched_product.categories.all()[1]),
+                nutriscore__in=['a', 'b', 'c'],
             )
             context = {'searched_product': searched_product, 'substitutes_products': substitutes_products}
             return render(request, 'products/results.html', context)
