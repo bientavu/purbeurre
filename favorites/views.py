@@ -1,5 +1,4 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from favorites.models import Favorite
 from django.http import HttpResponse
 from products.models import Product
@@ -20,4 +19,23 @@ def add_favorites(request):
         substitute_product=substitute_product,
         user=user
     )
+
     return HttpResponse(favorite_creation)
+
+
+def add_favorites_test(request):
+    product_to_substitute2 = Product.objects.get(id=request.POST.get('product_to_substitute'))
+    substitute_product2 = Product.objects.get(id=request.POST.get('substitute_product'))
+    user = request.user
+
+    favorite = Favorite.objects.get(id=request.POST.get('product_to_substitute'))
+    if favorite.substitute_product == request.POST.get('substitute_product'):
+        favorite_deletion = favorite.delete()
+        return HttpResponse(favorite_deletion)
+    else:
+        favorite_creation = Favorite.objects.get_or_create(
+            product_to_substitute=product_to_substitute2,
+            substitute_product=substitute_product2,
+            user=user
+        )
+        return HttpResponse(favorite_creation)
