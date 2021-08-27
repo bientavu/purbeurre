@@ -49,15 +49,16 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Add to favorites
     $(".add-to-favorites").on('click', function (event) {
+            my_div =  $(this);
             $.ajax({
                 type: "POST",
-                url: "/add_favorites/",
+                url: "/add_favorites_test/",
                 data: {
-                    'substitute_product': $(this).attr('class'),
+                    'substitute_product': $(this).parent().attr('class'),
                     'product_to_substitute': $("#searched_product > h2").attr('id')
                 },
                 success: function () {
-                    $('.add-to-favorites').html("<h2>C'est parti !</h2>")
+                    my_div.children("p").text(" C'est enregistré !")
                 }
             });
             return false;
