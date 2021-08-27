@@ -46,43 +46,8 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    // Activate SimpleLightbox plugin for portfolio items
-    // new SimpleLightbox({
-    //     elements: '#portfolio a.portfolio-box'
-    // });
 
-
-    // Add or delete favorites
-
-//     function favorites(attr) {
-//
-//     }
-//
-//     $('.favorites').on('click', function () {
-//         favorites($(this).attr("id"));
-//     });
-//
-// });
-
-    // $(document).ready(function () {
-    //     $("#{ product.id }").submit(function (event) {
-    //         event.preventDefault();
-    //         $.ajax({
-    //             type: "POST",
-    //             url: "/search_results/",
-    //             data: {
-    //                 'product_to_substitute': $('{ searched_product.id }'),
-    //                 'substitute_product': $('{ product.id }')
-    //                 // 'video': $('#').val() // from form
-    //             },
-    //             success: function () {
-    //                 $('#add-to-favorites').html("<h2>C'est parti !</h2>")
-    //             }
-    //         });
-    //         return false;
-    //     });
-    // });
-
+    // Add to favorites
     $("#add-to-favorites").on('click', function (event) {
             $.ajax({
                 type: "POST",
