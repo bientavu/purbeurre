@@ -42,19 +42,23 @@
                         {% else %}
                             <img class="portfolio-nutriscore" src="{% static 'src/assets/img/nutriscore-e.svg' %}" alt="..." />
                         {% endif %}
-                            <a class="portfolio-box" href="{% url 'product_detail' product_id=product.id %}" title="{{ product.name }}">
-                                <img class="img-fluid" src="{{ product.image_url }}" alt="..." />
-                                <div class="portfolio-box-caption">
-                                    <div class="project-category text-white-50">VOIR PLUS D'INFORMATIONS</div>
-                                </div>
-                            </a>
-                            <div>
-                                <div class="project-category text-center">{{ product.categories.all.0.name }}</div>
-                                <div class="project-name text-center">{{ product.name }}</div>
-                                <div id="add-to-favorites" class="{{ product.id }}">
-                                    <p class="nav-link bi-star mb-3 text-center" ><br>Ajouter aux favoris</p>
-                                </div>
+                        <a class="portfolio-box" href="{% url 'product_detail' product_id=product.id %}" title="{{ product.name }}">
+                            <img class="img-fluid" src="{{ product.image_url }}" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">VOIR PLUS D'INFORMATIONS</div>
                             </div>
+                        </a>
+                        <div>
+                            <div class="project-category text-center">{{ product.categories.all.0.name }}</div>
+                            <div class="project-name text-center">{{ product.name }}</div>
+                            {% if user.is_authenticated %}
+                                <div class="{{ product.id }}">
+                                    <div class="add-to-favorites" style="text-align: center">
+                                        <p class="btn btn-outline-primary bi-star w-auto" > Ajouter aux favoris</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 {% endfor %}
             </div>

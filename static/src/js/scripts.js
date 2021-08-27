@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
     // Add to favorites
-    $("#add-to-favorites").on('click', function (event) {
+    $(".add-to-favorites").on('click', function (event) {
             $.ajax({
                 type: "POST",
                 url: "/add_favorites/",
@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', event => {
                     'product_to_substitute': $("#searched_product > h2").attr('id')
                 },
                 success: function () {
-                    $('#add-to-favorites').html("<h2>C'est parti !</h2>")
+                    $('.add-to-favorites').html("<h2>C'est parti !</h2>")
                 }
             });
             return false;
