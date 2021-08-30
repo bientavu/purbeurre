@@ -1,10 +1,11 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from favorites.models import Favorite
 from products.models import Product
-from django.db.models import Q
 
 
 def search_results(request):
+    favorites = Favorite.objects.all()
     searched = request.POST['searched']
     if not searched or searched == "":
         messages.error(request, "Veuillez écrire un produit")
@@ -23,5 +24,7 @@ def search_results(request):
                 categories__in=categories_list,
                 nutriscore__in=['a', 'b', 'c'],
             )
-            context = {'searched_product': searched_product, 'substitutes_products': substitutes_products}
+            context = {'searched_product': searched_product,
+                       'substitutes_products': substitutes_products,
+                       'favorites': favorites}
             return render(request, 'products/results.html', context)

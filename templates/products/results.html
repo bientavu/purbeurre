@@ -54,7 +54,11 @@
                             {% if user.is_authenticated %}
                                 <div class="{{ product.id }}">
                                     <div class="add-to-favorites" style="text-align: center">
-                                        <p class="btn btn-outline-primary bi-star w-auto"> Ajouter aux favoris</p>
+                                        {% if product in favorites %}
+                                            <p class="btn btn-outline-primary bi-star w-auto"> Supprimer des favoris</p>
+                                        {% else %}
+                                            <p class="btn btn-outline-primary bi-star w-auto"> Ajouter aux favoris</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             {% endif %}

@@ -15,7 +15,7 @@ class CategoryModelTest(TestCase):
     def test_name_max_length(self):
         category = Category.objects.get(name='Pates à tartiner')
         field_label = category._meta.get_field('name').max_length
-        self.assertEquals(field_label, 100)
+        self.assertEquals(field_label, 300)
 
 
 class ProductModelTest(TestCase):
