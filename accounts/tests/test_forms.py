@@ -11,4 +11,4 @@ class CustomUserCreationFormTest(TestCase):
 class CustomUserChangeFormTest(TestCase):
     def test_fields_form_length(self):
         form = CustomUserChangeForm()
-        self.assertEquals(len(form.fields), 6)
+        self.assertEquals(len(form.fields), 5)
