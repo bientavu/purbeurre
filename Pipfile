@@ -9,10 +9,10 @@ psycopg2-binary = "*"
 pylint = "*"
 requests = "*"
 python-dotenv = "*"
-environ = "*"
 django-heroku = "*"
 gunicorn = "*"
 psycopg2 = "*"
+django-environ = "*"
 
 [dev-packages]
 
