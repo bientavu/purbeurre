@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 # Create your tests here.
-class PlayerFormTest(LiveServerTestCase):
+class UserFormTest(LiveServerTestCase):
 
     def testform(self):
         selenium = webdriver.Chrome()
