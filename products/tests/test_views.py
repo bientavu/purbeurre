@@ -1,8 +1,6 @@
 import pytest
 
 from django.urls import reverse
-
-from conftest import create_product
 from products.models import Product
 
 
@@ -21,4 +19,6 @@ def test_product_id(client):
     url = reverse('product_detail', kwargs={'product_id': product.id})
     response = client.get(url)
     assert response.status_code == 200
-    assert b'product_id' in response.content
+    assert product.name.encode() in response.content
+    assert product.nutriscore.encode() in response.content
+    assert product.sugar_100g.encode() in response.content

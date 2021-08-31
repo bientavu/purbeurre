@@ -1,6 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from products.models import Product, Category
+from products.models import Product
 
 
 def product_detail(request, product_id):
