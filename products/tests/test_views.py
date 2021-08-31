@@ -5,7 +5,7 @@ from products.models import Product
 
 
 @pytest.mark.django_db
-def test_product_id(client):
+def test_product_view(client):
     product = Product.objects.create(
         name='Test products',
         url='testurl.test',
@@ -20,5 +20,5 @@ def test_product_id(client):
     response = client.get(url)
     assert response.status_code == 200
     assert product.name.encode() in response.content
-    assert product.nutriscore.encode() in response.content
+    assert product.nutriscore.encode() == b'c' in response.content
     assert product.sugar_100g.encode() in response.content
