@@ -53,9 +53,9 @@
                             <div class="project-name text-center">{{ product.name }}</div>
                             {% if user.is_authenticated %}
                                 <div class="{{ product.id }}">
-                                    <div class="add-to-favorites" style="text-align: center">
+                                    <div id="refresh" class="add-to-favorites" style="text-align: center">
                                         {% if product in favorites %}
-                                            <p class="btn btn-outline-primary bi-star w-auto"> Supprimer des favoris</p>
+                                            <p class="btn btn-primary bi-star w-auto"> Supprimer des favoris</p>
                                         {% else %}
                                             <p class="btn btn-outline-primary bi-star w-auto"> Ajouter aux favoris</p>
                                         {% endif %}

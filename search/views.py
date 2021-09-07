@@ -26,5 +26,5 @@ def search_results(request):
             )
             context = {'searched_product': searched_product,
                        'substitutes_products': substitutes_products,
-                       'favorites': favorites}
+                       'favorites': [prod.substitute_product for prod in favorites]}
             return render(request, 'products/results.html', context)
