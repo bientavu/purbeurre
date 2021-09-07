@@ -58,8 +58,11 @@ window.addEventListener('DOMContentLoaded', event => {
                     'product_to_substitute': $("#searched_product > h2").attr('id')
                 },
                 success: function () {
-                    my_div.children("p").text(" C'est enregistré !")
+                    my_div.children("p").load(self)
                 }
+                // success: function () {
+                //     my_div.children("p").text(" C'est enregistré !")
+                // }
             });
             return false;
         });
