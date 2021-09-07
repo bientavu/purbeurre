@@ -23,7 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.environ.get("ENV", "development") == "production" else True
+if os.environ.get("ENV", "development") == "production":
+    DEBUG = False
+    django_heroku.settings(locals())
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapps.com", "localhost", "127.0.0.1"]
 
@@ -74,8 +78,6 @@ WSGI_APPLICATION = 'purbeurre.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# db_password = os.getenv("db_password")
 
 env = environ.Env()
 environ.Env.read_env()
@@ -139,4 +141,4 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
