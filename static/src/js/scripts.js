@@ -57,8 +57,12 @@ window.addEventListener('DOMContentLoaded', event => {
                     'substitute_product': $(this).parent().attr('class'),
                     'product_to_substitute': $("#searched_product > h2").attr('id')
                 },
-                success: function () {
-                    my_div.children("p").load(self)
+                success: function (is_deleted) {
+                        if (is_deleted === "True") {
+                            my_div.children("p").replaceWith('<p class="btn btn-outline-primary bi-star w-auto"> Ajouter aux favoris</p>')
+                        } else {
+                            my_div.children("p").replaceWith('<p class="btn btn-primary bi-star w-auto"> Supprimer des favoris</p>')
+                        }
                 }
                 // success: function () {
                 //     my_div.children("p").text(" C'est enregistré !")

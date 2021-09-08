@@ -31,7 +31,7 @@ def add_favorites_test(request):
     product_to_substitute = Product.objects.get(id=request.POST.get('product_to_substitute'))
     substitute_product = Product.objects.get(id=request.POST.get('substitute_product'))
     user = request.user
-
+    is_deleted = True
     try:
         favorite = Favorite.objects.get(
             product_to_substitute_id=request.POST.get('product_to_substitute'),
@@ -39,11 +39,12 @@ def add_favorites_test(request):
         )
         if str(favorite.substitute_product_id) == request.POST.get('substitute_product'):
             favorite_deletion = favorite.delete()
-            return HttpResponse(favorite_deletion)
+            return HttpResponse(is_deleted)
     except Favorite.DoesNotExist:
         favorite_creation = Favorite.objects.get_or_create(
             product_to_substitute=product_to_substitute,
             substitute_product=substitute_product,
             user=user
         )
-        return HttpResponse(favorite_creation)
+        is_deleted = False
+        return HttpResponse(is_deleted)
