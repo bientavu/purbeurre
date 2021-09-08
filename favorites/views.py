@@ -13,23 +13,23 @@ def import_favorites(request):
     return render(request, 'favorites/favorites.html', context)
 
 
-def add_favorites(request):
-    product_to_substitute = Product.objects.get(id=request.POST.get('product_to_substitute'))
-    substitute_product = Product.objects.get(id=request.POST.get('substitute_product'))
-    user = request.user
-
-    favorite_creation = Favorite.objects.get_or_create(
-        product_to_substitute=product_to_substitute,
-        substitute_product=substitute_product,
-        user=user
-    )
-
-    return HttpResponse(favorite_creation)
+# def add_favorites(request):
+#     product_to_substitute = Product.objects.get(id=request.POST.get('product_to_substitute'))
+#     substitute_product = Product.objects.get(id=request.POST.get('substitute_product'))
+#     user = request.user
+#
+#     favorite_creation = Favorite.objects.get_or_create(
+#         product_to_substitute=product_to_substitute,
+#         substitute_product=substitute_product,
+#         user=user
+#     )
+#
+#     return HttpResponse(favorite_creation)
 
 
 def add_favorites_test(request):
-    product_to_substitute2 = Product.objects.get(id=request.POST.get('product_to_substitute'))
-    substitute_product2 = Product.objects.get(id=request.POST.get('substitute_product'))
+    product_to_substitute = Product.objects.get(id=request.POST.get('product_to_substitute'))
+    substitute_product = Product.objects.get(id=request.POST.get('substitute_product'))
     user = request.user
 
     try:
@@ -42,8 +42,8 @@ def add_favorites_test(request):
             return HttpResponse(favorite_deletion)
     except Favorite.DoesNotExist:
         favorite_creation = Favorite.objects.get_or_create(
-            product_to_substitute=product_to_substitute2,
-            substitute_product=substitute_product2,
+            product_to_substitute=product_to_substitute,
+            substitute_product=substitute_product,
             user=user
         )
         return HttpResponse(favorite_creation)

@@ -19,6 +19,6 @@ def test_product_view(client):
     url = reverse('product_detail', kwargs={'product_id': product.id})
     response = client.get(url)
     assert response.status_code == 200
-    assert product.name.encode() in response.content
-    assert product.nutriscore.encode() == b'c' in response.content
-    assert product.sugar_100g.encode() in response.content
+    assert product.name in str(response.content)
+    assert product.nutriscore == 'c' in str(response.content)
+    assert product.sugar_100g in str(response.content)
