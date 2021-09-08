@@ -5,7 +5,7 @@ from products.models import Product
 
 
 def search_results(request):
-    favorites = Favorite.objects.all()
+    favorites = Favorite.objects.filter(user=request.user)
     searched = request.POST.get('searched')
     if not searched or searched == "":
         messages.error(request, "Veuillez écrire un produit")

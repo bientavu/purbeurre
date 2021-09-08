@@ -5,7 +5,7 @@ from products.models import Product
 
 
 def import_favorites(request):
-    favorites = Favorite.objects.all()
+    favorites = Favorite.objects.filter(user=request.user)
     favorites_unique = list(set(favorites))
     products = Product.objects.all()
     context = {'favorites': favorites,
