@@ -64,9 +64,6 @@ window.addEventListener('DOMContentLoaded', event => {
                             my_div.children("p").replaceWith('<p class="btn btn-primary bi-star w-auto"> Supprimer des favoris</p>')
                         }
                 }
-                // success: function () {
-                //     my_div.children("p").text(" C'est enregistré !")
-                // }
             });
             return false;
         });
