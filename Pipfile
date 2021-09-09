@@ -8,14 +8,15 @@ django = "*"
 psycopg2-binary = "*"
 pylint = "*"
 requests = "*"
-python-dotenv = "*"
 django-heroku = "*"
 gunicorn = "*"
 psycopg2 = "*"
 django-environ = "*"
+python-dotenv = "*"
 webdriver-manager = "*"
 
 [dev-packages]
+
 
 [requires]
 python_version = "3.8"
