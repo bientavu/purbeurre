@@ -14,9 +14,9 @@ psycopg2 = "*"
 django-environ = "*"
 python-dotenv = "*"
 webdriver-manager = "*"
+whitenoise = "*"
 
 [dev-packages]
-
 
 [requires]
 python_version = "3.7"
