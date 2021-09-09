@@ -25,7 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("ENV", "development") == "production":
     DEBUG = False
-    django_heroku.settings(locals())
 else:
     DEBUG = True
 
@@ -144,3 +143,5 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+if os.environ.get("ENV", "development") == "production":
+    django_heroku.settings(locals())
