@@ -18,18 +18,18 @@ class UserFormTest(LiveServerTestCase):
         super().tearDownClass()
 
     def testform(self):
-        selenium = webdriver.Chrome()
 
-        selenium.get('http://127.0.0.1:8000/accounts/signup/')
+        self.selenium.get('%s%s' % (self.live_server_url, '/accounts/signup/'))
+        # self.selenium.get('http://127.0.0.1:8000/accounts/signup/')
 
-        first_name = selenium.find_element_by_id('id_first_name')
-        last_name = selenium.find_element_by_id('id_last_name')
-        email = selenium.find_element_by_id('id_email')
-        birth_date = selenium.find_element_by_id('id_birth_date')
-        id_password1 = selenium.find_element_by_id('id_password1')
-        id_password2 = selenium.find_element_by_id('id_password2')
+        first_name = self.selenium.find_element_by_id('id_first_name')
+        last_name = self.selenium.find_element_by_id('id_last_name')
+        email = self.selenium.find_element_by_id('id_email')
+        birth_date = self.selenium.find_element_by_id('id_birth_date')
+        id_password1 = self.selenium.find_element_by_id('id_password1')
+        id_password2 = self.selenium.find_element_by_id('id_password2')
 
-        submit = selenium.find_element_by_id('submit_button')
+        submit = self.selenium.find_element_by_id('submit_button')
 
         first_name.send_keys('Jean')
         last_name.send_keys('Bon')
@@ -40,5 +40,5 @@ class UserFormTest(LiveServerTestCase):
 
         submit.send_keys(Keys.RETURN)
 
-        assert 'Jean' in selenium.page_source
-        assert 'test@test.com' in selenium.page_source
+        assert 'Jean' in self.selenium.page_source
+        assert 'test@test.com' in self.selenium.page_source
