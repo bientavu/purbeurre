@@ -13,6 +13,7 @@ django-heroku = "*"
 gunicorn = "*"
 psycopg2 = "*"
 django-environ = "*"
+webdriver-manager = "*"
 
 [dev-packages]
 
