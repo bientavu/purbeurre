@@ -28,7 +28,7 @@ if os.environ.get("ENV", "development") == "production":
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = [".herokuapps.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [".herokuapps.com", ".herokuapp.com", "localhost", "127.0.0.1"]
 
 # Application definition
 
@@ -129,7 +129,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static/dist'),
+    os.path.join(BASE_DIR, 'purbeurre/static/dist'),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
