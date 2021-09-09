@@ -1,30 +1,17 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from favorites.models import Favorite
 from django.http import HttpResponse
 from products.models import Product
 
 
 def import_favorites(request):
-    favorites = Favorite.objects.filter(user=request.user)
-    favorites_unique = list(set(favorites))
-    products = Product.objects.all()
-    context = {'favorites': favorites,
-               'products': products}
-    return render(request, 'favorites/favorites.html', context)
-
-
-# def add_favorites(request):
-#     product_to_substitute = Product.objects.get(id=request.POST.get('product_to_substitute'))
-#     substitute_product = Product.objects.get(id=request.POST.get('substitute_product'))
-#     user = request.user
-#
-#     favorite_creation = Favorite.objects.get_or_create(
-#         product_to_substitute=product_to_substitute,
-#         substitute_product=substitute_product,
-#         user=user
-#     )
-#
-#     return HttpResponse(favorite_creation)
+    if request.user.is_active:
+        product_substituted = Product.objects.filter(
+            favorites_as_product__isnull=False,
+            favorites_as_product__user=request.user
+        ).distinct()
+        context = {'product_substituted': product_substituted}
+        return render(request, 'favorites/favorites.html', context)
 
 
 def add_favorites_test(request):
@@ -38,10 +25,10 @@ def add_favorites_test(request):
             substitute_product_id=request.POST.get('substitute_product')
         )
         if str(favorite.substitute_product_id) == request.POST.get('substitute_product'):
-            favorite_deletion = favorite.delete()
+            favorite.delete()
             return HttpResponse(is_deleted)
     except Favorite.DoesNotExist:
-        favorite_creation = Favorite.objects.get_or_create(
+        Favorite.objects.get_or_create(
             product_to_substitute=product_to_substitute,
             substitute_product=substitute_product,
             user=user

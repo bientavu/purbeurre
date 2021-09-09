@@ -37,7 +37,13 @@
                             </label>
                         </form>
                             <li class="nav-item"><a href="{% url 'accounts' %}"><i class="nav-link bi-person fs-2 mb-3"></i></a></li>
-                            <li class="nav-item"><a href="{% url 'favorites' %}"><img src="{% static 'src/assets/carrot.svg' %}" class="fs-2 mb-3" width="32" height="40" alt=""></a></li>
+                            <li class="nav-item">
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'favorites' %}">
+                                        <img src="{% static 'src/assets/carrot.png' %}" class="nav-link fs-2 mb-3" width="32" height="40" alt="">
+                                    </a>
+                                {% endif %}
+                            </li>
                             <li class="nav-item">
                                 {% if user.is_authenticated %}
                                     <a href="{% url 'logout' %}">
