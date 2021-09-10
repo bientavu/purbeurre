@@ -10,12 +10,12 @@ class CategoryModelTest(TestCase):
     def test_name_label(self):
         category = Category.objects.first()
         field_label = category._meta.get_field('name').verbose_name
-        self.assertEquals(field_label, 'category_name')
+        self.assertEqual(field_label, 'category_name')
 
     def test_name_max_length(self):
         category = Category.objects.get(name='Pates à tartiner')
         field_label = category._meta.get_field('name').max_length
-        self.assertEquals(field_label, 300)
+        self.assertEqual(field_label, 300)
 
 
 class ProductModelTest(TestCase):
@@ -38,24 +38,24 @@ class ProductModelTest(TestCase):
     def test_name_max_length(self):
         product = Product.objects.first()
         max_length = product._meta.get_field('name').max_length
-        self.assertEquals(max_length, 200)
+        self.assertEqual(max_length, 200)
 
     def test_categories_help_text_name(self):
         product = Product.objects.first()
         help_text = product._meta.get_field('categories').help_text
-        self.assertEquals(help_text, 'Select a category for this product')
+        self.assertEqual(help_text, 'Select a category for this product')
 
     def test_categories_related_name(self):
         product = Product.objects.first()
         related_name = product._meta.get_field(
             'categories'
         ).remote_field.get_accessor_name()
-        self.assertEquals(related_name, 'products')
+        self.assertEqual(related_name, 'products')
 
     def test_url_max_length(self):
         product = Product.objects.first()
         max_length = product._meta.get_field('url').max_length
-        self.assertEquals(max_length, 300)
+        self.assertEqual(max_length, 300)
 
     def test_image_url_blank_is_true(self):
         product = Product.objects.first()
@@ -65,4 +65,4 @@ class ProductModelTest(TestCase):
     def test_nutriscore_max_length(self):
         product = Product.objects.first()
         max_length = product._meta.get_field('nutriscore').max_length
-        self.assertEquals(max_length, 1)
+        self.assertEqual(max_length, 1)

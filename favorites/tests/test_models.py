@@ -61,11 +61,11 @@ class FavoriteModelTest(TestCase):
         related_name = favorite._meta.get_field(
             'product_to_substitute'
         ).remote_field.get_accessor_name()
-        self.assertEquals(related_name, 'favorites_as_product')
+        self.assertEqual(related_name, 'favorites_as_product')
 
     def test_substitute_product_related_name(self):
         favorite = Favorite.objects.get(id=1)
         related_name = favorite._meta.get_field(
             'substitute_product'
         ).remote_field.get_accessor_name()
-        self.assertEquals(related_name, 'favorites_as_substitute')
+        self.assertEqual(related_name, 'favorites_as_substitute')

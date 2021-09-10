@@ -14,7 +14,7 @@ class CustomUserModelTest(TestCase):
     def test_username_max_length(self):
         user = CustomUser.objects.get(id=1)
         max_length = user._meta.get_field('username').max_length
-        self.assertEquals(max_length, 50)
+        self.assertEqual(max_length, 50)
 
     def test_birthdate_can_be_blank(self):
         user = CustomUser.objects.get(id=1)
