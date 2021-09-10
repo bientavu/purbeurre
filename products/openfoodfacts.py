@@ -6,7 +6,6 @@ class ProductDownloader:
     Download all the information of the products.
     Categories are setup in the module constant.py
     """
-
     def get_products_info(self):
         """
         Gets all the products information and put in a list
@@ -40,7 +39,6 @@ class ProductCleaner:
     Cleans the list that has been downloaded by
     the method get_products_info
     """
-
     def remove_empty_values(self, product):
         """
         Removes all the empty values from the list
