@@ -15,8 +15,12 @@ def import_favorites(request):
 
 
 def add_favorites_test(request):
-    product_to_substitute = Product.objects.get(id=request.POST.get('product_to_substitute'))
-    substitute_product = Product.objects.get(id=request.POST.get('substitute_product'))
+    product_to_substitute = Product.objects.get(
+        id=request.POST.get('product_to_substitute')
+    )
+    substitute_product = Product.objects.get(
+        id=request.POST.get('substitute_product')
+    )
     user = request.user
     is_deleted = True
     try:
@@ -24,7 +28,8 @@ def add_favorites_test(request):
             product_to_substitute_id=request.POST.get('product_to_substitute'),
             substitute_product_id=request.POST.get('substitute_product')
         )
-        if str(favorite.substitute_product_id) == request.POST.get('substitute_product'):
+        if str(favorite.substitute_product_id) ==\
+                request.POST.get('substitute_product'):
             favorite.delete()
             return HttpResponse(is_deleted)
     except Favorite.DoesNotExist:

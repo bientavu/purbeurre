@@ -16,7 +16,10 @@ def search_results(request):
             nutriscore__in=['d', 'e']
         ).first()
         if searched_product is None:
-            messages.error(request, "Désolé nous n'avons pas trouvé ce produit")
+            messages.error(
+                request,
+                "Désolé nous n'avons pas trouvé ce produit"
+            )
             return redirect('home')
         else:
             categories_list = searched_product.categories.all()[:2]
@@ -26,5 +29,7 @@ def search_results(request):
             )
             context = {'searched_product': searched_product,
                        'substitutes_products': substitutes_products,
-                       'favorites': [prod.substitute_product for prod in favorites]}
+                       'favorites': [
+                           prod.substitute_product for prod in favorites
+                       ]}
             return render(request, 'products/results.html', context)

@@ -21,11 +21,19 @@ class CategoryModelTest(TestCase):
 class ProductModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        product_insertion = Product.objects.create(name='Nutella', url='http://helloworld.com',
-                                                   image_url='http://helloworld.com/image', nutriscore='b',
-                                                   fat_100g=0.2,
-                                                   satured_fat_100g=0.5, salt_100g=0.1, sugar_100g=0.8)
-        product_insertion.categories.add(Category.objects.create(name='Pates à tartiner'))
+        product_insertion = Product.objects.create(
+            name='Nutella',
+            url='http://helloworld.com',
+            image_url='http://helloworld.com/image',
+            nutriscore='b',
+            fat_100g=0.2,
+            satured_fat_100g=0.5,
+            salt_100g=0.1,
+            sugar_100g=0.8
+        )
+        product_insertion.categories.add(
+            Category.objects.create(name='Pates à tartiner')
+        )
 
     def test_name_max_length(self):
         product = Product.objects.first()
@@ -39,7 +47,9 @@ class ProductModelTest(TestCase):
 
     def test_categories_related_name(self):
         product = Product.objects.first()
-        related_name = product._meta.get_field('categories').remote_field.get_accessor_name()
+        related_name = product._meta.get_field(
+            'categories'
+        ).remote_field.get_accessor_name()
         self.assertEquals(related_name, 'products')
 
     def test_url_max_length(self):

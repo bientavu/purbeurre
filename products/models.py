@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.fields import CharField
 
 
 # Create your models here.
@@ -13,7 +12,9 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
-    categories = models.ManyToManyField(Category, help_text='Select a category for this product',
+    categories = models.ManyToManyField(Category, help_text='Select a '
+                                                            'category for '
+                                                            'this product',
                                         related_name='products')
     url = models.CharField(max_length=300)
     image_url = models.CharField(max_length=300, blank=True, null=True)

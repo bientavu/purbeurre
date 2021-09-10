@@ -13,7 +13,8 @@ GET_RESPONSE = [{'categories': 'Boissons,Eaux,Eaux de sources,Eaux minérales,Ea
                 'de avellanas,Cremas de chocolate,Cremas de cacao y '
                 'avellanas,en:Sugary cooking helpers',
   'fat_100g': 30.9,
-  'image_url': 'https://images.openfoodfacts.org/images/products/301/762/042/2003/front_fr.270.400.jpg',
+  'image_url': 'https://images.openfoodfacts.org/images/products/301/762/042'
+               '/2003/front_fr.270.400.jpg',
   'nutriscore_grade': 'e',
   'product_name': 'Nutella pate a tartiner noisettes-cacao t.400 pot de 400 gr',
   'salt_100g': 0.107,
@@ -46,7 +47,8 @@ GET_RESPONSE = [{'categories': 'Boissons,Eaux,Eaux de sources,Eaux minérales,Ea
                 'Pâtes à tartiner au chocolat, Pâtes à tartiner aux noisettes '
                 'et au cacao',
   'fat_100g': 30.9,
-  'image_url': 'https://images.openfoodfacts.org/images/products/301/762/042/5035/front_fr.315.400.jpg',
+  'image_url': 'https://images.openfoodfacts.org/images/products/301/762/042'
+               '/5035/front_fr.315.400.jpg',
   'nutriscore_grade': 'e',
   'product_name': 'Nutella',
   'salt_100g': 0.107,

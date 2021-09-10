@@ -5,7 +5,11 @@ from accounts.models import CustomUser
 class CustomUserModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        CustomUser.objects.create(birth_date='1992-05-15', email='helloworld@hello.world', username='axel')
+        CustomUser.objects.create(
+            birth_date='1992-05-15',
+            email='helloworld@hello.world',
+            username='axel'
+        )
 
     def test_username_max_length(self):
         user = CustomUser.objects.get(id=1)

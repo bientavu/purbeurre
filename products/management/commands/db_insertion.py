@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from products.models import Product, Category
 from products.openfoodfacts import ProductCleaner, ProductDownloader
 
@@ -28,7 +28,9 @@ class Command(BaseCommand):
             )
 
             for category_name in categories[:2]:
-                categories_insertion, _ = Category.objects.get_or_create(name=category_name[:99])
+                categories_insertion, _ = Category.objects.get_or_create(
+                    name=category_name[:99]
+                )
                 product_insertion.categories.add(categories_insertion)
 
         Product.objects.filter(id=1).delete()

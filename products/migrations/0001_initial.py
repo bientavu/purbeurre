@@ -14,23 +14,45 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True, verbose_name='category_name')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')
+                 ),
+                ('name', models.CharField(
+                    max_length=100,
+                    unique=True,
+                    verbose_name='category_name')
+                 ),
             ],
         ),
         migrations.CreateModel(
             name='Product',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')
+                 ),
                 ('name', models.CharField(max_length=200)),
                 ('url', models.CharField(max_length=300)),
-                ('image_url', models.CharField(blank=True, max_length=300, null=True)),
+                ('image_url', models.CharField(
+                    blank=True,
+                    max_length=300,
+                    null=True)
+                 ),
                 ('nutriscore', models.CharField(max_length=1)),
                 ('fat_100g', models.FloatField()),
                 ('satured_fat_100g', models.FloatField()),
                 ('salt_100g', models.FloatField()),
                 ('sugar_100g', models.FloatField()),
-                ('categories', models.ManyToManyField(help_text='Select a category for this product', related_name='products', to='products.Category')),
+                ('categories', models.ManyToManyField(
+                    help_text='Select a category for this product',
+                    related_name='products',
+                    to='products.Category')
+                 ),
             ],
         ),
     ]

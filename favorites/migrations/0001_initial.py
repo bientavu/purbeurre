@@ -18,10 +18,32 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Favorite',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('product_to_substitute', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='favorites_as_product', to='products.product')),
-                ('substitute_product', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='favorites_as_substitute', to='products.product')),
-                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='favorites', to=settings.AUTH_USER_MODEL)),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')
+                 ),
+                ('product_to_substitute',
+                 models.ForeignKey(
+                     null=True,
+                     on_delete=django.db.models.deletion.SET_NULL,
+                     related_name='favorites_as_product',
+                     to='products.product')
+                 ),
+                ('substitute_product',
+                 models.ForeignKey(
+                     null=True,
+                     on_delete=django.db.models.deletion.SET_NULL,
+                     related_name='favorites_as_substitute',
+                     to='products.product')
+                 ),
+                ('user', models.ForeignKey(
+                    null=True,
+                    on_delete=django.db.models.deletion.SET_NULL,
+                    related_name='favorites',
+                    to=settings.AUTH_USER_MODEL)
+                 ),
             ],
         ),
     ]
