@@ -1,9 +1,11 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from favorites.models import Favorite
 from products.models import Product
 
 
+@login_required
 def search_results(request):
     favorites = Favorite.objects.filter(user=request.user)
     searched = request.POST.get('searched')

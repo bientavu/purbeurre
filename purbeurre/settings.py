@@ -158,7 +158,7 @@ if os.environ.get('ENV') == 'production':
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'signup'
 LOGOUT_REDIRECT_URL = 'home'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
