@@ -147,7 +147,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static", ]
 
 if os.environ.get('ENV') == 'production':
-    DEBUG = True
+    DEBUG = False
 
     STATIC_ROOT = BASE_DIR / 'staticfiles'
     STATICFILES_STORAGE = 'whitenoise.storage' \
