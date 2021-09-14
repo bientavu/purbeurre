@@ -16,6 +16,9 @@ Pur Beurre
                 <div class="col-lg-8 align-self-baseline">
                     <h2 class="text-white-75 mb-5">Trouvez un produit de substitution pour ceux que vous consommez
                         tous les jours</h2>
+                    {% if not user.is_authenticated %}
+                    <h3>(Vous avez besoin d'être connecté à un compte)</h3><br>
+                    {% endif %}
                     <form method="POST" action={% url 'search_results' %}>
                         {% csrf_token %}
                         <label style="width: 60%;">
