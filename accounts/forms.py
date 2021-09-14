@@ -11,7 +11,7 @@ class CustomUserCreationForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['first_name'].label = 'Prénom'
         self.fields['last_name'].label = 'Nom'
-        self.fields['birth_date'].label = 'Date de naissance'
+        self.fields['birth_date'].label = 'Date de naissance (AAAA-MM-JJ)'
         self.fields['password1'].label = 'Mot de passe'
         self.fields['password2'].label = 'Confirmation mot de passe'
 
