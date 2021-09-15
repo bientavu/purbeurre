@@ -7,6 +7,10 @@ class Command(BaseCommand):
     help = 'Add the products to the database'
 
     def handle(self, *args, **options):
+        """
+        Method to initialize the database. It calls the openfoodfacts API
+        to get all the products informations then add them into the DB
+        """
         products = ProductDownloader()
         cleaner = ProductCleaner()
         products_dict = products.get_products_info()

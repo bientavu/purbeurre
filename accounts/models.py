@@ -3,6 +3,7 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
+    """Custom user models"""
     birth_date = models.DateField(null=True, blank=True)
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=50, blank=True)

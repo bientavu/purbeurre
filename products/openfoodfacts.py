@@ -2,13 +2,11 @@ import requests
 
 
 class ProductDownloader:
-    """
-    Download all the information of the products.
-    Categories are setup in the module constant.py
-    """
+    """Download all the information for the products"""
     def get_products_info(self):
         """
-        Gets all the products information and put in a list
+        Gets all the products information from the
+        openfoodfacts API and put them in a list
         """
         url = "https://fr.openfoodfacts.org/cgi/search.pl"
         number_of_pages = 8
@@ -40,16 +38,14 @@ class ProductCleaner:
     the method get_products_info
     """
     def remove_empty_values(self, product):
-        """
-        Removes all the empty values from the list
-        """
+        """Removes all the empty values from the list"""
         res = {key: val for key, val in product.items() if val}
         return res
 
     def clean(self, products):
         """
         Add all the cleaned products to a new list only if
-        length is 8, name length under 100
+        length is 9, name length under 100
         """
         cleaned_products = []
 

@@ -3,6 +3,7 @@ from django.conf import settings
 
 
 class Favorite(models.Model):
+    """Favorites models"""
     product_to_substitute = models.ForeignKey(
         'products.Product',
         on_delete=models.SET_NULL,

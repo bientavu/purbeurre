@@ -5,6 +5,10 @@ from products.models import Product
 
 
 def import_favorites(request):
+    """
+    Method used to import the user favorites from the DB and inject
+    them into the favorites HTML pages in order to display them
+    """
     if request.user.is_active:
         product_substituted = Product.objects.filter(
             favorites_as_product__isnull=False,
@@ -15,6 +19,10 @@ def import_favorites(request):
 
 
 def add_favorites_test(request):
+    """
+    Method that allows the user to add a product in favorites or
+    delete it if the product already exists in the database
+    """
     product_to_substitute = Product.objects.get(
         id=request.POST.get('product_to_substitute')
     )

@@ -3,11 +3,13 @@ from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
+    """Custom user creation form"""
     class Meta:
         model = CustomUser
         fields = ('first_name', 'last_name', 'email', 'birth_date')
 
     def __init__(self, *args, **kwargs):
+        """Display the labels in French instead of English"""
         super().__init__(*args, **kwargs)
         self.fields['first_name'].label = 'Prénom'
         self.fields['last_name'].label = 'Nom'

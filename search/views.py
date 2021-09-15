@@ -5,8 +5,13 @@ from favorites.models import Favorite
 from products.models import Product
 
 
-# @login_required
+@login_required
 def search_results(request):
+    """
+    This is the search method that allows to display the product the user
+    has searched for and then all the substitutes products that are attached
+    to the searched product
+    """
     favorites = Favorite.objects.filter(user=request.user)
     searched = request.POST.get('searched')
     if not searched or searched == "":

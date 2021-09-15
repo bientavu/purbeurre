@@ -5,8 +5,13 @@ from accounts.models import CustomUser
 
 
 class FavoriteModelTest(TestCase):
+    """Multiple tests for the Favorites models"""
     @classmethod
     def setUpTestData(cls):
+        """
+        Test data setup : we create a user, products,
+        categories and a favorite
+        """
         user = CustomUser.objects.create(
             birth_date='1992-05-15',
             email='helloworld@hello.world',
@@ -47,16 +52,19 @@ class FavoriteModelTest(TestCase):
                                 user=user)
 
     def test_product_to_substitute_null_is_true(self):
+        """Check if null is True for product_to_substitute"""
         favorite = Favorite.objects.get(id=1)
         null = favorite._meta.get_field('product_to_substitute').null
         self.assertTrue(null)
 
     def test_substitute_product_null_is_true(self):
+        """Check if null is True for substitute_product"""
         favorite = Favorite.objects.get(id=1)
         null = favorite._meta.get_field('substitute_product').null
         self.assertTrue(null)
 
     def test_product_to_substitute_related_name(self):
+        """Check if related name is favorites_as_product"""
         favorite = Favorite.objects.get(id=1)
         related_name = favorite._meta.get_field(
             'product_to_substitute'
@@ -64,6 +72,7 @@ class FavoriteModelTest(TestCase):
         self.assertEqual(related_name, 'favorites_as_product')
 
     def test_substitute_product_related_name(self):
+        """Check if related name is favorites_as_substitute"""
         favorite = Favorite.objects.get(id=1)
         related_name = favorite._meta.get_field(
             'substitute_product'

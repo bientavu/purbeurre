@@ -5,22 +5,29 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class UserFormTest(LiveServerTestCase):
-
+    """
+    User functional test. It will test the user creation form
+    by automatically filling the form fields with Selenium
+    """
     @classmethod
     def setUpClass(cls):
+        """Selenium web driver setup"""
         super().setUpClass()
         cls.selenium = webdriver.Chrome(ChromeDriverManager().install())
         cls.selenium.implicitly_wait(10)
 
     @classmethod
     def tearDownClass(cls):
+        """Quit Selenium once the test is done"""
         cls.selenium.quit()
         super().tearDownClass()
 
     def testform(self):
-
+        """
+        Get the URL, then find forms fields and submit button by element id
+        Forms fields are then filled with send keys
+        """
         self.selenium.get('%s%s' % (self.live_server_url, '/accounts/signup/'))
-        # self.selenium.get('http://127.0.0.1:8000/accounts/signup/')
 
         first_name = self.selenium.find_element_by_id('id_first_name')
         last_name = self.selenium.find_element_by_id('id_last_name')
