@@ -5,7 +5,7 @@ from favorites.models import Favorite
 from products.models import Product
 
 
-@login_required
+# @login_required
 def search_results(request):
     favorites = Favorite.objects.filter(user=request.user)
     searched = request.POST.get('searched')

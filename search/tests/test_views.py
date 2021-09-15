@@ -6,7 +6,7 @@ from favorites.models import Favorite
 
 
 @pytest.mark.django_db
-def test_search_view(auto_login_user):
+def test_search_view(connected_client):
     product_1 = Product.objects.create(
         name='Test products',
         url='testurl.test',
@@ -27,7 +27,6 @@ def test_search_view(auto_login_user):
         sugar_100g='1.4',
         salt_100g='1.5'
     )
-    client, user = auto_login_user()
     favorites = Favorite.objects.create(
         product_to_substitute_id='1',
         substitute_product_id='2',
@@ -35,7 +34,7 @@ def test_search_view(auto_login_user):
     )
     data = {'searched': 'products_2'}
     url = reverse('search_results')
-    response = client.post(url, data)
+    response = connected_client.post(url, data)
     assert response.status_code == 200
     assert product_2.name in str(response.content)
     assert favorites.product_to_substitute_id in str(response.content)
