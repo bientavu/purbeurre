@@ -8,6 +8,7 @@ class ProductDownloader:
         Gets all the products information from the
         openfoodfacts API and put them in a list
         """
+        global response
         url = "https://fr.openfoodfacts.org/cgi/search.pl"
         number_of_pages = 8
         page_size = 1000
@@ -29,7 +30,7 @@ class ProductDownloader:
             response = requests.get(url, params=params)
             products.extend(response.json()["products"])
 
-        return products
+        return products, response
 
 
 class ProductCleaner:
