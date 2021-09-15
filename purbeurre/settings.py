@@ -146,7 +146,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / "static", ]
 
-DEBUG = False
+DEBUG = True
 
 if os.environ.get('ENV') == 'production':
     DEBUG = False
