@@ -21,4 +21,3 @@ def test_product_view(client):
     assert response.status_code == 200
     assert product.name in str(response.content)
     assert product.nutriscore == 'c' in str(response.content)
-

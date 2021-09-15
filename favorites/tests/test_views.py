@@ -41,9 +41,9 @@ def test_favorites_view(connected_client, user):
     p1 = Product.objects.get(id=product_insertion.id)
     p2 = Product.objects.get(id=product_insertion_2.id)
 
-    fav = Favorite.objects.get_or_create(product_to_substitute=p2,
-                                         substitute_product=p1,
-                                         user=user)
+    Favorite.objects.get_or_create(product_to_substitute=p2,
+                                   substitute_product=p1,
+                                   user=user)
     url = reverse('favorites')
     response = connected_client.get(url)
 

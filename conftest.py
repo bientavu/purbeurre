@@ -21,6 +21,3 @@ def connected_client(user):
     connected_client = DjangoClient()
     connected_client.force_login(user)
     return connected_client
-
-
-
