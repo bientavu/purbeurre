@@ -5,10 +5,10 @@ You will be able to create an account and save the product into favorites.
 It is based on the Openfoodfact database, on the nutriscore.
 
 ## **Prerequisites**
-1. Python 3.8
-2. Django 3.2.7
-3. PostGreSQL (create a database)
-4. Others required modules are in the pipfile
+- Python 3.8
+- Django 3.2.7
+- PostGreSQL (create a database)
+- Others required modules are in the pipfile
 
 ## **How to install**
 `git clone https://github.com/bientavu/purbeurre.git`
