@@ -11,19 +11,19 @@ It is based on the Openfoodfact database, on the nutriscore.
 - Others required modules are in the pipfile
 
 ## **How to install**
-`git clone https://github.com/bientavu/purbeurre.git`
-`cd purbeurre/`
-`pipenv install`
-`pipenv shell` (if not already activated)
+- `git clone https://github.com/bientavu/purbeurre.git`
+- `cd purbeurre/`
+- `pipenv install`
+- `pipenv shell` (if not already activated)
 
 In purbeurre/settings.py :
 1. Update the "SECRET_KEY" to a random key
 2. Update the database name to yours
 3. Update the database password to yours
 
-`python manage.py migrate`
-`python manage.py db_insertion`
-`python manage.py runserver`
+- `python manage.py migrate`
+- `python manage.py db_insertion`
+- `python manage.py runserver`
 
 You can check the app at http://127.0.0.1:8000/
 
