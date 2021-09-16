@@ -31,4 +31,4 @@ You can check the app at http://127.0.0.1:8000/
 
 https://purbeurre-ocam.herokuapp.com/
 
-![example](https://github.com/bientavu/purbeurre/blob/main/static/src/assets/img/portfolio/fullsize/screenshot_home.pngraw=true)
+![example](https://github.com/bientavu/purbeurre/blob/main/static/src/assets/img/portfolio/fullsize/screenshot_home.png?raw=true)
