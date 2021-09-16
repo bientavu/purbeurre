@@ -1,9 +1,11 @@
+from django.core.management import call_command
 from django.test import TestCase
 from products.models import Category, Product
 
 
 class CategoryModelTest(TestCase):
     """Multiple tests for Category models"""
+
     @classmethod
     def setUpTestData(cls):
         """Data setup by creating a category"""
@@ -24,6 +26,7 @@ class CategoryModelTest(TestCase):
 
 class ProductModelTest(TestCase):
     """Multiple tests for Product models"""
+
     @classmethod
     def setUpTestData(cls):
         """Data setup by creating a product and his category"""
