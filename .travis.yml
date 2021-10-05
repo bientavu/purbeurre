@@ -17,7 +17,7 @@ install:
 
 env:
   global:
-    - DJANGO_SETTINGS_MODULE="config.settings.travis"
+    - DJANGO_SETTINGS_MODULE="purbeurre.settings"
 
 services:
   - postgresql
