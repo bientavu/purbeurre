@@ -14,6 +14,8 @@ branches:
 install:
   - pip install pipenv pytest
   - pipenv install --dev
+  - python manage.py migrate
+  - python manage.py db_insertion
 
 env:
   global:
