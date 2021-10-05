@@ -1,7 +1,28 @@
+dist: bionic
 language: python
+
 python:
-  - "3.8"
+  - '3.8'
+
+addons:
+  chrome: stable
+
+branches:
+  only:
+    - staging
+
 install:
   - pip install pipenv
-  - pipenv install
+  - pipenv install --dev
+
+before_script:
+  - install-webdrivers --path webdrivers
+
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE="config.settings.travis"
+
+services:
+  - postgresql
+
 script: pytest
