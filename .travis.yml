@@ -15,10 +15,6 @@ install:
   - pip install pipenv
   - pipenv install --dev
 
-env:
-  global:
-    - DJANGO_SETTINGS_MODULE="config.settings.travis"
-
 services:
   - postgresql
 
