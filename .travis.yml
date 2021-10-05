@@ -9,7 +9,7 @@ addons:
 
 branches:
   only:
-    - staging
+    - main
 
 install:
   - pip install pipenv
