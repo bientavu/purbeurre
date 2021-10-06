@@ -16,6 +16,8 @@ python-dotenv = "*"
 webdriver-manager = "*"
 whitenoise = "*"
 django-sass = "*"
+pytest = "*"
+django-pytest = "*"
 
 [dev-packages]
 
