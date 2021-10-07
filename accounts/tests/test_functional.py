@@ -1,5 +1,6 @@
 from django.test import LiveServerTestCase
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -13,7 +14,12 @@ class UserFormTest(LiveServerTestCase):
     def setUpClass(cls):
         """Selenium web driver setup"""
         super().setUpClass()
-        cls.selenium = webdriver.Chrome(ChromeDriverManager().install())
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        cls.selenium = webdriver.Chrome(ChromeDriverManager().install(),
+                                        options=chrome_options)
         cls.selenium.implicitly_wait(10)
 
     @classmethod
