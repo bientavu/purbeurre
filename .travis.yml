@@ -17,9 +17,9 @@ install:
 
 env:
   global:
-    - DJANGO_SETTINGS_MODULE="purbeurre.settings"
+    - DJANGO_SETTINGS_MODULE="purbeurre.settings.travis"
 
 services:
   - postgresql
 
-script: python -m pytest
+script: pytest
