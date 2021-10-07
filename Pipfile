@@ -18,6 +18,7 @@ whitenoise = "*"
 django-sass = "*"
 pytest = "*"
 django-pytest = "*"
+selenium = "*"
 
 [dev-packages]
 
