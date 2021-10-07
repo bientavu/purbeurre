@@ -125,5 +125,4 @@ dmypy.json
 .pyre/
 
 staticfiles
-/purbeurre/settings/__init__.py
 /purbeurre/settings/production.py
