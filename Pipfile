@@ -17,7 +17,7 @@ webdriver-manager = "*"
 whitenoise = "*"
 django-sass = "*"
 pytest = "*"
-django-pytest = "*"
+pytest-django = "*"
 selenium = "*"
 
 [dev-packages]
