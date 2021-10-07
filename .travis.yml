@@ -12,8 +12,8 @@ branches:
     - main
 
 install:
-  - pip install pipenv pytest
-  - pipenv install --dev
+  - pip install pipenv
+  - pipenv install
 
 env:
   global:
