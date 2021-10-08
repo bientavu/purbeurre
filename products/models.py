@@ -26,3 +26,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class DataTableInfos(models.Model):
+    date = models.DateTimeField()
