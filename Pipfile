@@ -19,6 +19,8 @@ django-sass = "*"
 pytest = "*"
 pytest-django = "*"
 selenium = "*"
+coverage = "*"
+pytest-cov = "*"
 
 [dev-packages]
 
