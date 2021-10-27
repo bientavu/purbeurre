@@ -130,3 +130,4 @@ static/node_modules
 static/scripts
 static/package.json
 static/package-lock.json
+.coveragerc
