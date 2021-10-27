@@ -39,7 +39,7 @@ def test_search_view(connected_client, user):
     )
     data = {'searched': product_2}
     url = reverse('search_results')
-    response = connected_client.post(url, data)
+    response = connected_client.get(url, data)
     assert response.status_code == 200
     assert product_2.name in str(response.content)
     assert str(favorites.product_to_substitute_id) in str(response.content)

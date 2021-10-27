@@ -3,6 +3,8 @@ from django.test import TestCase
 from products.openfoodfacts import ProductDownloader, ProductCleaner
 
 result = [{'categories': '',
+           '_keywords': [''],
+           'ingredients_original_tags': [''],
            'fat_100g': 0,
            'image_url': '',
            'nutriscore_grade': 'a',
@@ -21,6 +23,13 @@ result = [{'categories': '',
                          'chocolat, Pâtes à tartiner aux noisettes et au '
                          'cacao, Aide '
                          'culinaire sucrée',
+           '_keywords': ['mie',
+                         'nutriscore',
+                         'complete',
+                         'origine'],
+           'ingredients_original_tags': ['en:whole-wheat-flour',
+                                         'en:water',
+                                         'en:wheat-flour'],
            'fat_100g': 30.9,
            'image_url': 'https://static.openfoodfacts.org/images/products'
                         '/301/762/042/2003/front_fr.270.400.jpg',
@@ -44,6 +53,13 @@ correct_removed_result = [
                    'chocolat, Pâtes à tartiner aux noisettes et au cacao, '
                    'Aide '
                    'culinaire sucrée',
+     '_keywords': ['mie',
+                   'nutriscore',
+                   'complete',
+                   'origine'],
+     'ingredients_original_tags': ['en:whole-wheat-flour',
+                                   'en:water',
+                                   'en:wheat-flour'],
      'fat_100g': 30.9,
      'image_url': 'https://static.openfoodfacts.org/images/products/301/762'
                   '/042/2003/front_fr'
@@ -62,6 +78,7 @@ correct_removed_result = [
 
 class TestProducts(TestCase):
     """Test for the products API call"""
+
     def test_products_info_are_valid(self):
         """Check is the response is ok"""
         with patch.object(
