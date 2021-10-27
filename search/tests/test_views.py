@@ -1,7 +1,6 @@
 import pytest
 
 from django.urls import reverse
-from products.models import Product
 from favorites.models import Favorite
 
 
@@ -26,3 +25,19 @@ def test_search_view(connected_client, user, products_creation):
     assert str(favorites.product_to_substitute_id) in str(response.content)
     assert product_2.name in str(response.content)
     assert product_2.image_url in str(response.content)
+
+
+@pytest.mark.django_db
+def test_autocompletion(connected_client, user, products_creation):
+    """
+    Test the autocompletion view by creating products.
+    Then we test the response.content to check if we have
+    the informations we need (product name, status code, etc)
+    """
+    product_1, product_2 = products_creation
+    data = {'term': product_2.name[:4]}
+    url = reverse('home')
+    response = connected_client.get(url, data)
+    assert response.status_code == 200
+    assert product_2.name in str(response.content)
+    assert product_1.name in str(response.content)

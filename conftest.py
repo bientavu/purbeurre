@@ -1,7 +1,13 @@
 import pytest
+
 from django.test import Client as DjangoClient
 from accounts.models import CustomUser
 from products.models import Product
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 
 @pytest.fixture
@@ -22,6 +28,19 @@ def connected_client(user):
     connected_client = DjangoClient()
     connected_client.force_login(user)
     return connected_client
+
+
+@pytest.fixture()
+def server(db):
+    """Selenium web driver setup"""
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    service = Service(ChromeDriverManager().install())
+    selenium = webdriver.Chrome(service=service, options=chrome_options)
+    selenium.implicitly_wait(10)
+    return selenium
 
 
 @pytest.fixture
