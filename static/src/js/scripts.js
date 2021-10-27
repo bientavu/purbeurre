@@ -49,23 +49,22 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Add to favorites
     $(".add-to-favorites").on('click', function (event) {
-            my_div =  $(this);
-            $.ajax({
-                type: "POST",
-                url: "/add_favorites_test/",
-                data: {
-                    'substitute_product': $(this).parent().attr('class'),
-                    'product_to_substitute': $("#searched_product > h2").attr('id')
-                },
-                success: function (is_deleted) {
-                        if (is_deleted === "True") {
-                            my_div.children("p").replaceWith('<p class="btn btn-outline-primary bi-star w-auto"> Ajouter aux favoris</p>')
-                        } else {
-                            my_div.children("p").replaceWith('<p class="btn btn-primary bi-star w-auto"> Supprimer des favoris</p>')
-                        }
+        my_div =  $(this);
+        $.ajax({
+            type: "POST",
+            url: "/add_favorites_test/",
+            data: {
+                'substitute_product': $(this).parent().attr('class'),
+                'product_to_substitute': $("#searched_product > h2").attr('id')
+            },
+            success: function (is_deleted) {
+                if (is_deleted === "True") {
+                    my_div.children("p").replaceWith('<p class="btn btn-outline-primary bi-star w-auto"> Ajouter aux favoris</p>')
+                } else {
+                    my_div.children("p").replaceWith('<p class="btn btn-primary bi-star w-auto"> Supprimer des favoris</p>')
                 }
-            });
-            return false;
+            }
         });
-
+        return false;
+        });
 });

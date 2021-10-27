@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
-from products.models import Product, Category, DataTableInfos
+from products.models import Product, Category, DataTableInfos, Keywords, \
+    Ingredients
 from products.openfoodfacts import ProductCleaner, ProductDownloader
-# from datetime import datetime, timezone
 from django.utils import timezone
 
 
@@ -21,6 +21,8 @@ class Command(BaseCommand):
         for product in cleaned_products:
 
             categories = [p.strip() for p in product['categories'].split(',')]
+            keywords = [p for p in product['_keywords']]
+            ingredients = [p for p in product['ingredients_original_tags']]
 
             product_insertion, _ = Product.objects.get_or_create(
                 name=product['product_name'],
@@ -38,6 +40,18 @@ class Command(BaseCommand):
                     name=category_name[:99]
                 )
                 product_insertion.categories.add(categories_insertion)
+
+            for keyword_name in keywords:
+                keywords_insertion, _ = Keywords.objects.get_or_create(
+                    name=keyword_name[:99]
+                )
+                product_insertion.keywords.add(keywords_insertion)
+
+            for ingredient_name in ingredients:
+                ingredients_insertion, _ = Ingredients.objects.get_or_create(
+                    name=ingredient_name[:99]
+                )
+                product_insertion.ingredients.add(ingredients_insertion)
 
         Product.objects.filter(id=1).delete()
 

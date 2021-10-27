@@ -19,10 +19,9 @@ Pur Beurre
                     {% if not user.is_authenticated %}
                     <h3>(Vous avez besoin d'être connecté à un compte)</h3><br>
                     {% endif %}
-                    <form method="POST" action={% url 'search_results' %}>
-                        {% csrf_token %}
+                    <form method="get" action={% url 'search_results' %}>
                         <label style="width: 60%;">
-                            <input class="btn btn-xl2" name="searched" type="search" placeholder="Tapez votre recherche ici...">
+                            <input class="btn btn-xl2" name="searched" id="product" type="text" placeholder="Tapez votre recherche ici...">
                         </label><br><br>
                         {% if messages %}
                         <div class="messages">
@@ -33,6 +32,13 @@ Pur Beurre
                         {% endif %}
                         <button class="btn btn-primary btn-xl" type="submit">C'est parti !</button>
                     </form>
+                    <script>
+                        $( function() {
+                            $( "#product" ).autocomplete({
+                                source: '{% url 'home' %}'
+                            });
+                        });
+                    </script>
                 </div>
             </div>
         </div>

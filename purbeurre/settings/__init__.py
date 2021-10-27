@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'purbeurre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test2',
+        'NAME': 'keywords_test',
         'USER': 'postgres',
         'PASSWORD': 'azqsazqs282',
         'HOST': '127.0.0.1',
